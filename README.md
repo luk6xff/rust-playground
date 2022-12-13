@@ -3,9 +3,13 @@
 
 ## Tutorial desc
 SW written here is based on the following resources:
-* This really great ebook: ["Practical Rust Project"](https://www.amazon.com/Practical-Rust-Projects-Computing-Applications/dp/1484255984)
-* Official documentation: https://doc.rust-lang.org/rust-by-example
+* Official documentation:
+    https://doc.rust-lang.org/stable/book/
+    https://doc.rust-lang.org/rust-by-example
+* Rustlings: https://github.com/rust-lang/rustlings
 * Rust for cpp devs: https://github.com/nrc/r4cppp
+* Book: ["Practical Rust Projects"](https://www.amazon.com/Practical-Rust-Projects-Computing-Applications/dp/1484255984)
+
 
 ### Rust env setup
 Follow the instructions from: https://www.rust-lang.org/learn/get-started
@@ -47,7 +51,6 @@ This is called a manifest, and it contains all of the metadata that Cargo needs 
 ```
 
 Here’s what’s in src/main.rs:
-
 
 ```
 fn main() {
