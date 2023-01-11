@@ -10,7 +10,7 @@
 //
 // Make the code compile and the tests pass.
 
-// I AM NOT DONE
+// I AM DONE
 
 use std::collections::HashMap;
 
@@ -34,7 +34,14 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    let count = map.iter().fold(0, |sum, (key, val)| {
+                                    if *val == value {
+                                        sum + 1
+                                    } else {
+                                        sum + 0
+                                    }
+                                    } );
+    count
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -53,7 +60,18 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    // 1.
+    //let count = collection.into_iter().fold(0, |sum, map| sum + count_iterator(map, value));
+
+    // 2.
+    let count = collection.into_iter().fold(0, |sum, map| sum + map.iter().fold(0, |sum, (k, v)| {
+        if *v == value {
+            sum + 1
+        } else {
+            sum + 0
+        }
+    }));
+    count
 }
 
 #[cfg(test)]
