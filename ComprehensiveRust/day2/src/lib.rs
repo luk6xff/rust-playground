@@ -3,3 +3,7 @@ pub mod expression_evaluation;
 pub mod generic_logger;
 pub mod generic_data_types;
 pub mod trait_bounds;
+pub mod impl_trait;
+pub mod generic_min;
+pub mod counter;
+pub mod closures;
