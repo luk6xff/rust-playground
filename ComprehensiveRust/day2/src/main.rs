@@ -1,6 +1,7 @@
 use day2::simple_gui::*;
 use day2::expression_evaluation::*;
 use day2::generic_logger::*;
+use day2::generic_data_types::*;
 
 
 fn main() {
@@ -23,4 +24,15 @@ fn main() {
     // generic_logger
     let l = VerbosityFilter { max_verbosity: 3, inner: StderrLogger };
     do_things(&l);
+
+    // generic_data_types
+    let integer = Point { x: 5, y: 10 };
+    let float = Point { x: 1.0, y: 4.0 };
+    let mut p = Point2 { x: 5, y: 10.0};
+    println!("{integer:?} and {float:?} and {p:?}");
+    println!("integer_coords: {:?}", integer.coords());
+    println!("float_coords: {:?}", float.coords());
+    println!("p_coords: {:?}", p.coords());
+    p.set_coords(99, 9999 as f64);
+    println!("p_coords: {:?}", p.coords());
 }
