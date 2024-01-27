@@ -2,6 +2,7 @@ use day2::simple_gui::*;
 use day2::expression_evaluation::*;
 use day2::generic_logger::*;
 use day2::generic_data_types::*;
+use day2::trait_bounds::*;
 
 
 fn main() {
@@ -35,4 +36,9 @@ fn main() {
     println!("p_coords: {:?}", p.coords());
     p.set_coords(99, 9999 as f64);
     println!("p_coords: {:?}", p.coords());
+
+    // trait_bounds
+    let foo = String::from("foo");
+    let foo2 = duplicate(foo);
+    println!("foo2: {:?}", foo2)
 }
