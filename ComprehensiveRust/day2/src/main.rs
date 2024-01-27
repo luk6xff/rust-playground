@@ -7,6 +7,7 @@ use day2::impl_trait::*;
 use day2::generic_min::*;
 use day2::counter::*;
 use day2::closures::*;
+use day2::rot13::*;
 
 
 fn main() {
@@ -120,5 +121,15 @@ fn main() {
         x
     };
     println!("decorate: {}", apply_with_log(decorate, 8));
+
+
+    println!("\n>>> rot13 <<<");
+    let mut rot =
+        RotDecoder { input: "Gb trg gb gur bgure fvqr!".as_bytes(), rot: 13 };
+    let mut result = String::new();
+    rot.read_to_string(&mut result).unwrap();
+    println!("{}", result);
+    joke();
+    binary();
 
 }

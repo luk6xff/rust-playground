@@ -7,3 +7,4 @@ pub mod impl_trait;
 pub mod generic_min;
 pub mod counter;
 pub mod closures;
+pub mod rot13;
