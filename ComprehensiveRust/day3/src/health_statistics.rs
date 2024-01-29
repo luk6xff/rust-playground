@@ -1,8 +1,3 @@
-// TODO: remove this when you're done with your implementation.
-#![allow(unused_variables, dead_code)]
-
-
-#![allow(dead_code)]
 pub struct User {
     name: String,
     age: u32,
@@ -35,17 +30,25 @@ impl User {
     }
 
     pub fn visit_doctor(&mut self, measurements: Measurements) -> HealthReport {
-        todo!("Update a user's statistics based on measurements from a visit to the doctor")
+
+        self.visit_count += 1;
+        let hr: HealthReport = HealthReport {
+           patient_name: &self.name,
+           visit_count: self.visit_count as u32,
+           height_change: measurements.height - self.height,
+           blood_pressure_change: match self.last_blood_pressure {
+               None => None,
+               Some(lbp) => Some((measurements.blood_pressure.0 as i32 - lbp.0 as i32, measurements.blood_pressure.1 as i32 - lbp.1 as i32)),
+           }
+        };
+        self.height = measurements.height;
+        self.last_blood_pressure = Some(measurements.blood_pressure);
+        hr
     }
+
 }
 
-fn main() {
-    let bob = User::new(String::from("Bob"), 32, 155.2);
-    println!("I'm {} and my age is {}", bob.name, bob.age);
-}
-
-#[test]
-fn test_visit() {
+pub fn test_visit() {
     let mut bob = User::new(String::from("Bob"), 32, 155.2);
     assert_eq!(bob.visit_count, 0);
     let report = bob.visit_doctor(Measurements {

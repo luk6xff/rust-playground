@@ -2,6 +2,7 @@ use day3::builder_type::*;
 use day3::trait_objects::*;
 use day3::binary_tree::*;
 use day3::health_statistics::*;
+use::day3::interior_mutability::*;
 
 fn main() {
 
@@ -43,5 +44,19 @@ fn main() {
     // Tests created in binary_tree.rs
 
 
+    println!("\n>>> interior_mutability <<<");
+    let root = Node::new(1);
+    root.borrow_mut().children.push(Node::new(5));
+    let subtree = Node::new(10);
+    subtree.borrow_mut().children.push(Node::new(11));
+    subtree.borrow_mut().children.push(Node::new(12));
+    root.borrow_mut().children.push(subtree);
+    println!("graph: {root:#?}");
+    println!("graph sum: {}", root.borrow().sum());
+
+
     println!("\n>>> health_statistics <<<");
+    let bob = User::new(String::from("Bob"), 32, 155.2);
+    println!("I'm {} and my age is {}", bob.name, bob.age);
+    test_visit();
 }
